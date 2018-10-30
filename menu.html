@@ -1,0 +1,189 @@
+<html>
+
+<head>
+    <style>
+        .menu {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            left: 0;
+            height: 31px;
+            padding: 10px;
+            background: #3f51b5;
+        }
+
+        .square {
+            /* background: #3f51b5; */
+            background: white;
+            width: 1.625em;
+            height: .313em;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        /* Version 1 */
+
+        .hamburger-icon-1 {
+            position: relative;
+            display: inline-block;
+            width: 1.625em;
+            height: .313em;
+            width: 30px;
+            height: 30px;
+            transition: all .2s ease-in-out;
+            /* border: 1px solid red;  */
+        }
+
+        .hamburger-icon-1::before,
+        .hamburger-icon-1::after {
+            content: "";
+            position: absolute;
+            transition: all .2s ease-in-out;
+        }
+
+        .hamburger-icon-1::before,
+        .hamburger-icon-1::after {
+            width: 1.625em;
+            height: .313em;
+            /* background: #3f51b5; */
+            background: white;
+            transition: all .2s ease-in-out;
+        }
+
+        .hamburger-icon-1::before {
+            top: 2px;
+            position: absolute;
+            margin: auto;
+            left: 0;
+            right: 0;
+        }
+
+        .hamburger-icon-1::after {
+            bottom: 2px;
+            position: absolute;
+            margin: auto;
+            left: 0;
+            right: 0;
+
+        }
+
+
+        /* APLICANDO EFEITO DE ROTACAO */
+
+        .hamburger-icon-1.active::after {
+            position: absolute;
+            transform: rotate(-226deg);
+            bottom: 13px;
+        }
+
+        .hamburger-icon-1.active::before {
+            position: absolute;
+            transform: rotate(225deg);
+            top: 12px;
+        }
+
+        .hamburger-icon-1.active .square {
+            display: none;
+        }
+
+
+        /* conteudo do menu */
+
+        .menu-content {
+            position: absolute;
+            height: 100vh;
+            width: 200px;
+            left: -200px;
+            top: 50px;
+            /* transition: all 0.5ms ease-in; */
+            transition: left 0.2s ease-in-out;
+            background: #333;
+            color: white;
+
+        }
+
+        .menu-content>ul {
+            list-style: none;
+        }
+
+        .menu-content>ul>li>a {
+            font-size: 18px;
+            line-height: 30px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu-content.active {
+            left: 0px;
+            /* transform: translateX(20%); */
+        }
+
+
+        /* conteudo */
+
+        .content {
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+
+
+    <script>
+        function toggleMenu() {
+            var itens_ativos = document.getElementsByClassName('active');
+            if (itens_ativos.length > 0) {
+                document.getElementById('menu-content').classList.remove('active')
+                document.getElementById('menu-icon').classList.remove('active');
+            } else {
+                document.getElementById('menu-content').classList.add('active');
+                document.getElementById('menu-icon').classList.add('active');
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+
+    <div class="menu">
+        <a onclick="toggleMenu()" href="#" id="menu-icon" class="hamburger-icon-1">
+            <div class="square"></div>
+        </a>
+
+        <div id="menu-content" class="menu-content">
+            <ul>
+                <li>
+                    <a href="#"> Home</a>
+                </li>
+                <li>
+                    <a href="#">Perfil</a>
+                </li>
+                <li>
+                    <a href="#">Produtos</a>
+                </li>
+                <li>
+                    <a href="#">Configurações</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="content">
+        <h4>
+            Conteudo
+        </h4>
+    </div>
+
+</body>
+
+</html>
